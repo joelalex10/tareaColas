@@ -3,7 +3,7 @@ spring:
     name: school
   datasource:
 #    platform: postgres
-    url: ${URL_DATABASE:jdbc:postgresql://192.168.0.107:5432/school_db}
+    url: ${URL_DATABASE:jdbc:postgresql://192.168.1.4:5432/school_db}
     username: postgres
     password: postgres
   jpa:

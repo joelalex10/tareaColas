@@ -12,12 +12,11 @@ public class ProducerFanoutController {
     @Autowired
     private RabbitTemplate template;
 
-    @GetMapping(value = "/producer")
     @RequestMapping(method = RequestMethod.POST, value = "/v1/api/producer/fanout/student")
     public String producer(@RequestBody StudentDto studentDto) {
 
-        template.convertAndSend(RabbitMqConfig.FANOUT_EXCHANGE, "", studentDto);
+        template.convertAndSend(RabbitMqConfig.FANOUT_EXCHANGE, RabbitMqConfig.TOPIC_STUDENT_ROUTING_KEY, studentDto);
 
-        return "Message sent to the RabbitMQ Fanout Exchange Successfully";
+        return "Message sent to the RabbitMQ Topic Exchange Successfully";
     }
 }
